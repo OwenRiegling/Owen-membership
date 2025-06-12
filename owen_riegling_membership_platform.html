@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Owen Riegling Membership Platform</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://i.imgur.com/6Fg3YOq.jpg') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 60px 20px;
+      min-height: 100vh;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 8px #000;
+    }
+    form {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      backdrop-filter: blur(10px);
+    }
+    input, select {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    input[type="file"] {
+      background: white;
+      color: black;
+    }
+    button {
+      background: #ff9900;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #e67e00;
+    }
+    #message {
+      display: none;
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+    .loader {
+      display: none;
+      margin: 20px auto;
+      border: 6px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 6px solid #ff9900;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>Owen Riegling Membership Platform</h1>
+    <form id="membershipForm">
+      <input type="text" name="fullname" placeholder="Full Name" required />
+      <input type="number" name="age" placeholder="Age" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <input type="text" name="nationality" placeholder="Nationality" required />
+      <input type="text" name="ssn" placeholder="SSN / SIN" required />
+      <input type="file" name="id_upload" accept=".jpg,.jpeg,.png,.pdf" required />
+      <button type="submit">Submit</button>
+    </form>
+    <div class="loader" id="loader"></div>
+    <div id="message">Thanks! Your form has been submitted.</div>
+  </div>
+
+  <script>
+    document.getElementById("membershipForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("loader").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("message").style.display = "block";
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
